@@ -18,7 +18,20 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('test');
+    
+    if (!name) {
+      // display alert
+    } else if (name && isEditing) {
+      // editing
+    } else {
+      // show alert
+      const newProduct = {
+        id: new Date().getTime().toString(), // Date function instead of an external library
+        title: name,
+      };
+      setProductsList([...productsList, newProduct]);
+      setName('');
+    };
   };
 
   return (
@@ -38,10 +51,12 @@ const App = () => {
           </SubmitButton>
         </FormControl>
       </Form>
-      <ProductsContainer>
-        <ProductsList />
-        <ButtonClear>Clear list</ButtonClear>
-      </ProductsContainer>
+      {productsList.length > 0 && (
+          <ProductsContainer>
+            <ProductsList products={productsList}/>
+            <ButtonClear>Clear list</ButtonClear>
+          </ProductsContainer>
+        )}
     </Container>
   );
 }
@@ -56,7 +71,7 @@ const Container = styled.div`
   margin: 0 auto;
   margin-top: 7rem;
   padding: 7rem 0;
-  width: 70vw;
+  width: 90vw;
   background-color: gray;
 `;
 
