@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Alert from "./components/Alert";
 import ProductsList from "./components/ProductsList";
 import { FaShoppingBag } from 'react-icons/fa';
+import { getLocalStorage } from "./utils";
 
 
 const App = () => {
   const [name, setName] = useState('');
-  const [productsList, setProductsList] = useState([]);
+  const [productsList, setProductsList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
@@ -16,13 +17,24 @@ const App = () => {
     msg: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     
     if (!name) {
       showAlert(true, 'danger', 'Please enter value 🤷‍♂️');
     } else if (name && isEditing) {
-      // editing
+      setProductsList(
+        productsList.map((product) => {
+          if (product.id === editID) {
+            return { ...product, title: name }
+          }
+          return product;
+        })
+      );
+      setName('');
+      setEditID(null);
+      setIsEditing(false);
+      showAlert(true, 'success', 'Value changed ✔')
     } else {
       showAlert(true, 'success', 'Product added to the list 👌');
       const newProduct = {
@@ -43,10 +55,21 @@ const App = () => {
     setProductsList([]);
   };
 
-  const removeProduct = (id) => {
+  const removeProduct = id => {
     showAlert(true, 'danger', 'Product removed 👍');
     setProductsList(productsList.filter((product) => product.id !== id));
   };
+
+  const editProduct = id => {
+    const selectedProduct = productsList.find((product) => product.id === id);
+    setIsEditing(true);
+    setEditID(id);
+    setName(selectedProduct.title);
+  };
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(productsList));
+  }, [productsList]);
 
   return (
     <Container>
@@ -70,6 +93,7 @@ const App = () => {
           <ProductsList
             products={productsList}
             removeProduct={removeProduct}
+            editProduct={editProduct}
           />
           <ButtonClear onClick={clearList}>Clear list</ButtonClear>
           </ProductsContainer>

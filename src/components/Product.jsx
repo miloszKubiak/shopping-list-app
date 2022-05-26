@@ -3,13 +3,14 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import styled from 'styled-components';
 
 
-const Product = ({ id, title, onRemove }) => {
+const Product = ({ id, title, onRemove, onEdit }) => {
   return (
     <Container>
       <Title>{title}</Title>
       <Buttons>
         <ButtonEdit
           type='button'
+          onClick={() => onEdit(id)}
         >
           <FaEdit />
         </ButtonEdit>

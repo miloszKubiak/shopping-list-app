@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import styled from 'styled-components';
 
-const ProductsList = ({ products, removeProduct }) => {
+const ProductsList = ({ products, removeProduct, editProduct }) => {
   return (
     <Container>
       {products.map((product) => {
@@ -13,6 +13,7 @@ const ProductsList = ({ products, removeProduct }) => {
             key={id}
             title={title}
             onRemove={removeProduct}
+            onEdit={editProduct}
           />
         );
       })}
