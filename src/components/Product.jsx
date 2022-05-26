@@ -31,6 +31,7 @@ const Container = styled.div`
   align-items: center;
   background-color: red;
   margin: .7rem 0;
+  width: 80%;
 `;
 
 const Title = styled.p`

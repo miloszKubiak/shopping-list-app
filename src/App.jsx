@@ -11,7 +11,7 @@ const App = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
-    show: true,
+    show: false,
     type: '',
     msg: '',
   });
@@ -20,7 +20,7 @@ const App = () => {
     e.preventDefault();
     
     if (!name) {
-      // display alert
+      showAlert(true, 'danger', 'Please enter value');
     } else if (name && isEditing) {
       // editing
     } else {
@@ -34,10 +34,14 @@ const App = () => {
     };
   };
 
+  const showAlert = (show=false, type='', msg='') => {
+    setAlert({show, type, msg})
+  }
+
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        {alert.show && <Alert />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
         <Title><FaShoppingBag /> Shopping List</Title>
         <FormControl>
           <Input

@@ -24,5 +24,4 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 30rem;
-  max-width: 90%;
 `;
