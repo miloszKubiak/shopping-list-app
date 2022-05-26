@@ -2,13 +2,18 @@ import React from 'react';
 import Product from './Product';
 import styled from 'styled-components';
 
-const ProductsList = ({ products }) => {
+const ProductsList = ({ products, removeProduct }) => {
   return (
     <Container>
       {products.map((product) => {
         const { id, title } = product;
         return (
-          <Product key={id} title={title} />
+          <Product
+            id={id}
+            key={id}
+            title={title}
+            onRemove={removeProduct}
+          />
         );
       })}
     </Container>
@@ -24,4 +29,5 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 30rem;
+  max-width: 70%;
 `;

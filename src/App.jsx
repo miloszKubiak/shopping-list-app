@@ -20,11 +20,11 @@ const App = () => {
     e.preventDefault();
     
     if (!name) {
-      showAlert(true, 'danger', 'Please enter value');
+      showAlert(true, 'danger', 'Please enter value 🤷‍♂️');
     } else if (name && isEditing) {
       // editing
     } else {
-      // show alert
+      showAlert(true, 'success', 'Product added to the list 👌');
       const newProduct = {
         id: new Date().getTime().toString(), // Date function instead of an external library
         title: name,
@@ -34,9 +34,19 @@ const App = () => {
     };
   };
 
-  const showAlert = (show=false, type='', msg='') => {
-    setAlert({show, type, msg})
-  }
+  const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg })
+  };
+
+  const clearList = () => {
+    showAlert(true, 'danger', 'Empty list 😒');
+    setProductsList([]);
+  };
+
+  const removeProduct = (id) => {
+    showAlert(true, 'danger', 'Product removed 👍');
+    setProductsList(productsList.filter((product) => product.id !== id));
+  };
 
   return (
     <Container>
@@ -57,8 +67,11 @@ const App = () => {
       </Form>
       {productsList.length > 0 && (
           <ProductsContainer>
-            <ProductsList products={productsList}/>
-            <ButtonClear>Clear list</ButtonClear>
+          <ProductsList
+            products={productsList}
+            removeProduct={removeProduct}
+          />
+          <ButtonClear onClick={clearList}>Clear list</ButtonClear>
           </ProductsContainer>
         )}
     </Container>

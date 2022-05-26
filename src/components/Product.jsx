@@ -3,7 +3,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import styled from 'styled-components';
 
 
-const Product = ({ title }) => {
+const Product = ({ id, title, onRemove }) => {
   return (
     <Container>
       <Title>{title}</Title>
@@ -15,6 +15,7 @@ const Product = ({ title }) => {
         </ButtonEdit>
         <ButtonDelete
           type='button'
+          onClick={() => onRemove(id)}
         >
           <FaTrash />
         </ButtonDelete>
