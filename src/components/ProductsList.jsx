@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from './Product';
 import styled from 'styled-components';
+import { mobile } from '../responsive';
 
 const ProductsList = ({ products, removeProduct, editProduct }) => {
   return (
@@ -24,11 +25,17 @@ const ProductsList = ({ products, removeProduct, editProduct }) => {
 export default ProductsList;
 
 const Container = styled.div`
-  background-color: blue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 30rem;
   max-width: 70%;
+  max-height: 25rem;
+  overflow-y:scroll;
+
+  ${mobile({
+    width: '15rem',
+    maxHeight: '13rem'
+  })}
 `;

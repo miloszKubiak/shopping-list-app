@@ -4,6 +4,7 @@ import Alert from "./components/Alert";
 import ProductsList from "./components/ProductsList";
 import { FaShoppingBag } from 'react-icons/fa';
 import { getLocalStorage } from "./utils";
+import { mobile } from "./responsive";
 
 
 const App = () => {
@@ -75,7 +76,7 @@ const App = () => {
     <Container>
       <Form onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} />}
-        <Title><FaShoppingBag /> Shopping List</Title>
+        <Title><FaShoppingBag style ={{ fontSize: '1 rem' }} /> Shopping List</Title>
         <FormControl>
           <Input
             type='text'
@@ -111,9 +112,11 @@ const Container = styled.div`
   align-items: center;
   margin: 0 auto;
   margin-top: 7rem;
-  padding: 7rem 0;
-  width: 90vw;
-  background-color: gray;
+  padding: 2rem 0;
+  width: 60vw;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  border-radius: .3rem;
+  box-shadow: 0 0 .5rem tomato;
 `;
 
 const Form = styled.form`
@@ -131,23 +134,55 @@ const ProductsContainer = styled.div`
   margin-top: 2rem;
 `;
 
-const FormControl = styled.div``;
+const FormControl = styled.div`
+  padding: .6rem;
+  ${mobile({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '.3rem',
+  })}
+`;
 
 const Input = styled.input`
   padding: .6rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  ${mobile({
+    width: '80%',
+  })}
 `;
 
 const SubmitButton = styled.button`
   padding: .6rem;
+  border: none;
+  color: white;
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  border-radius: .2rem;
   cursor: pointer;
+  ${mobile({
+    width: '50%',
+  })}
 `;
 
 const Title = styled.h2`
-  
+  font-size: 2rem;
+  color: black;
+  font-family: 'Lobster', cursive;
+  letter-spacing: .2rem;
+  color: white;
+  ${mobile({
+    fontSize: '1rem',
+  })}
 `;
 
 const ButtonClear = styled.button`
   padding: .7rem;
   margin: 2rem auto;
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  border: none;
+  border-radius: .2rem;
+  color: white;
   cursor: pointer;
 `;
