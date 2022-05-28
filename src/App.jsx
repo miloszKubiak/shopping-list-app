@@ -110,8 +110,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  margin-top: 7rem;
+  margin: 5rem auto;
   padding: 2rem 0;
   width: 60vw;
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
@@ -135,7 +134,9 @@ const ProductsContainer = styled.div`
 `;
 
 const FormControl = styled.div`
-  padding: .6rem;
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
   ${mobile({
     display: 'flex',
     flexDirection: 'column',
@@ -148,9 +149,10 @@ const Input = styled.input`
   padding: .6rem;
   outline: none;
   border: none;
+  width: 70%;
   border-bottom: 1px solid black;
   ${mobile({
-    width: '80%',
+    width: '50%',
   })}
 `;
 
@@ -158,9 +160,14 @@ const SubmitButton = styled.button`
   padding: .6rem;
   border: none;
   color: white;
+  letter-spacing: .1rem;
+  width: 30%;
   background-image: linear-gradient(to top left, #39b385, #9be15d);
   border-radius: .2rem;
   cursor: pointer;
+  &:hover {
+    background-image: linear-gradient(to top left, #409675, #a7e472);
+  }
   ${mobile({
     width: '50%',
   })}
@@ -184,5 +191,9 @@ const ButtonClear = styled.button`
   border: none;
   border-radius: .2rem;
   color: white;
+  letter-spacing: .1rem;
   cursor: pointer;
+  &:hover {
+    background-image: linear-gradient(to top left, #fd2e62, #e95058);
+  }
 `;

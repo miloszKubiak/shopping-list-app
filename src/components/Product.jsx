@@ -32,16 +32,19 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: .2rem;
   margin-top: .2rem;
-  width: 80%;
+  background-image: linear-gradient( 135deg, #97ABFF 10%, #123597 100%);
+  width: 100%;
   ${mobile({
     display: 'flex',
-    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   })}
 `;
 
 const Title = styled.p`
-  margin-left: .6rem;
+  margin-left: .4rem;
   letter-spacing: .1rem;
   color: white;
   ${mobile({
@@ -59,22 +62,30 @@ const Buttons = styled.div`
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    margin: '.2rem auto',
+    margin: '.2rem',
   })}
 `;
 
 const ButtonEdit = styled.button`
   border: none;
   background: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: whitesmoke;
   cursor: pointer;
+  transition: color .2s ease-in;
+  &:hover {
+    color: gray;
+  }
 `;
 
 const ButtonDelete = styled.button`
   border: none;
   background: none;
-  font-size: 1.5rem;
-  color: tomato;
+  font-size: 1.2rem;
+  color: #e52a5a;
   cursor: pointer;
+  transition: color .2s ease-in;
+  &:hover {
+    color: red;
+  }
 `;

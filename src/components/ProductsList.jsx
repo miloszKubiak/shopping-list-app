@@ -30,12 +30,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 30rem;
-  max-width: 70%;
-  max-height: 25rem;
-  overflow-y:scroll;
-
+  max-width: 90%;
   ${mobile({
-    width: '15rem',
-    maxHeight: '13rem'
+    width: '12rem',
   })}
 `;
