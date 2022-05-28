@@ -3,13 +3,13 @@ import styled from "styled-components";
 import Alert from "./components/Alert";
 import ProductsList from "./components/ProductsList";
 import { FaShoppingBag } from 'react-icons/fa';
-import { getLocalStorage } from "./utils";
+import { getListFromLocalStorage } from "./utils";
 import { mobile } from "./responsive";
 
 
 const App = () => {
   const [name, setName] = useState('');
-  const [productsList, setProductsList] = useState(getLocalStorage());
+  const [productsList, setProductsList] = useState(getListFromLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
