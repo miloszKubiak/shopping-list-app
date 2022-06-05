@@ -29,7 +29,7 @@ describe("App Component", () => {
 
 	test("input should change", () => {
 		render(<App />);
-		const inputElement = screen.getByPlaceholderText("/e.g. Milk/i");
+		const inputElement = screen.getByPlaceholderText(/e.g. Milk/i);
 		const testValue = "test";
 
 		fireEvent.change(inputElement, { target: { value: testValue } });
