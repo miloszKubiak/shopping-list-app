@@ -5,7 +5,7 @@ import { mobile } from '../responsive';
 
 const Product = ({ id, title, onRemove, onEdit }) => {
   return (
-    <Container>
+    <Container data-testid='product'>
       <Title>{title}</Title>
       <Buttons>
         <ButtonEdit
@@ -15,6 +15,7 @@ const Product = ({ id, title, onRemove, onEdit }) => {
           <FaEdit />
         </ButtonEdit>
         <ButtonDelete
+          data-testid='delete'
           type='button'
           onClick={() => onRemove(id)}
         >

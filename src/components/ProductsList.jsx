@@ -5,7 +5,7 @@ import { mobile } from '../responsive';
 
 const ProductsList = ({ products, removeProduct, editProduct }) => {
   return (
-    <Container>
+    <Container data-testid='products'>
       {products.map((product) => {
         const { id, title } = product;
         return (
