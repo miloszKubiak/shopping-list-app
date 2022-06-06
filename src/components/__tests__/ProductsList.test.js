@@ -22,10 +22,8 @@ describe("ProductsList Component", () => {
 		expect(screen.getByTestId("products")).toBeInTheDocument();
 	});
 
-	describe("when products exists", () => {
-		test("should display 3 products", () => {
-			render(<ProductsList products={productsMock} />);
-			expect(screen.getAllByTestId("product").length).toEqual(3);
-		});
+	test("should display 3 products", () => {
+		render(<ProductsList products={productsMock} />);
+		expect(screen.getAllByTestId("product").length).toEqual(3);
 	});
 });

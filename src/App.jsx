@@ -88,7 +88,7 @@ const App = () => {
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 					/>
-					<SubmitButton>{isEditing ? "Edit" : "Submit"}</SubmitButton>
+					<SubmitButton data-testid='submit'>{isEditing ? "Edit" : "Submit"}</SubmitButton>
 				</FormControl>
 			</Form>
 			{productsList.length > 0 && (
