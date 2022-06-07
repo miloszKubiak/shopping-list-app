@@ -26,4 +26,9 @@ describe("ProductsList Component", () => {
 		render(<ProductsList products={productsMock} />);
 		expect(screen.getAllByTestId("product").length).toEqual(3);
 	});
+
+	test("should not to be rendered when products prop has value as empty array", () => {
+		render(<ProductsList products={[]} />);
+		expect(screen.queryByTestId("product")).not.toBeInTheDocument();
+	});
 });

@@ -9,6 +9,7 @@ const Product = ({ id, title, onRemove, onEdit }) => {
       <Title>{title}</Title>
       <Buttons>
         <ButtonEdit
+          data-testid='edit'
           type='button'
           onClick={() => onEdit(id)}
         >

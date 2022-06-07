@@ -53,19 +53,19 @@ describe("App Component", () => {
 		expect(mockedSubmit).not.toHaveBeenCalled();
 	});
 
-	// test("Form submit should go through succesfully", () => {
-	// 	const mockedSubmit = jest.fn();
-	// 	render(<App />);
-	// 	const button = screen.getByText(/submit/i);
-	// 	const input = screen.getByPlaceholderText(/e.g. Milk/i);
+/// test, który kończy się niepowodzeniem, bardzo dobry przykład na to, że formularz powinien być w osobnym komponencie
+	
+	
+	test("Form submit should go through succesfully", () => {
+		const mockedSubmit = jest.fn();
+		render(<App />);
+		const button = screen.getByTestId('submit');
+		const input = screen.getByPlaceholderText(/e.g. Milk/i);
 
-	// 	fireEvent.change(input, { target: { value: "bread" } });
-	// 	fireEvent.click(button);
+		fireEvent.change(input, { target: { value: 'mleko' } });
+		fireEvent.click(button);
 
-	// 	expect(mockedSubmit).toHaveBeenCalledTimes(1);
-	// 	expect(mockedSubmit).toHaveBeenCalledWith({
-	// 		id: "1",
-	// 		title: "bread",
-	// 	});
-	// });
+		expect(mockedSubmit).toHaveBeenCalledTimes(1);
+		expect(mockedSubmit).toHaveBeenCalledWith({});
+	});
 });
